@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    {% block head %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+      <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/syntax.css" />
+      <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/style.css" />
+    {% endblock head %}
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <ol role="navigation">
+          {% for title, link in MENUITEMS %}
+            <li><a href="{{ link }}">{{ title }}</a></li>
+          {% endfor %}
+          {% for pg in pages %}
+            <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+          {% endfor %}
+        </ol>
+      </header>
+
+      <main>
+        {% block content %}
+        {% endblock %}
+      </main>
+    </div>
+  </body>
+</html>

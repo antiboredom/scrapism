@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+        <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Scrapism - Intro to the Command Line</title>
+      <link rel="stylesheet" href="/theme/syntax.css" />
+      <link rel="stylesheet" href="/theme/style.css" />
+
+
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <ol role="navigation">
+            <li><a href="/">Scrapism</a></li>
+            <li class="active"><a href="/intro-to-the-command-line/">Intro to the Command Line</a></li>
+            <li><a href="/intro-to-python/">Intro to Python</a></li>
+            <li><a href="/web-scraping-basics/">Web Scraping Basics</a></li>
+            <li><a href="/using-real-browsers/">Using Real Browsers</a></li>
+            <li><a href="/scraping-xhr-requests/">Scraping XHR Requests</a></li>
+            <li><a href="/downloading-media/">Downloading Media</a></li>
+            <li><a href="/using-scrapy/">Using Scrapy</a></li>
+            <li><a href="/related-readings/">Related Readings</a></li>
+        </ol>
+      </header>
+
+      <main>
+    <h1>Intro to the Command Line</h1>
+    
+
+    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/JQRXiwfkTbI" frameborder="0" allowfullscreen></iframe></div>
+
+<p><br></p>
+<h2>Notes</h2>
+<p>The command line is a text-based interface for interacting with your computer. From the command line you can launch programs, view files, and manipulate your file system by making, moving, and copying files and directories. You can think of it as the Finder in Mac, without the graphic interface, but much more powerful.</p>
+<h3>Setup</h3>
+<p>On a Mac you can access the command line by opening up the <code>Terminal</code> application, located in <code>/Applications/Utilities/Terminal</code></p>
+<p>To get started on Windows you will need to set up the Windows Subsystem for Linux, which allows you to run Ubuntu (a Linux distribution) from within your current Windows 10 installation.  <a href="https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows">Follow this guide to do so</a>.</p>
+<hr>
+<h3>The Prompt</h3>
+<p>When you open up your terminal application you'll see something like this:</p>
+<div class="codehilite"><pre><span></span><code>SamsComputer:~ sam$
+</code></pre></div>
+
+
+<p>This is called the "prompt". By default (on a Mac) it shows the name of the computer, the directory that you are currently in, your username, and then a $ sign.</p>
+<p>The basic use of the command line is: 1) you type a command, 2) you hit return, and 3) some output of the command is printed to the screen.</p>
+<hr>
+<h3>Basic Navigation &amp; File Operations</h3>
+<p><em>Please note I use the word "directory" and "folder" interchangeably.</em></p>
+<p>When you open a new terminal window, you are placed inside your home folder. On a Mac this is <code>/Users/myusername</code> and on Linux, <code>/home/myusername</code>.</p>
+<p>To see the folder you are currently in, type: <code>pwd</code> and hit return. <code>pwd</code> stands for "print working directory", or in other words, "show me the directory I am currently working from".</p>
+<h4>Here are some basic commands for getting around, making, deleting and copying files and folders.</h4>
+<p><strong><code>pwd</code></strong> stands for "print working directory". It prints out where you are:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">pwd</span>
+</code></pre></div>
+
+
+<p><strong><code>ls</code></strong> stands for "list". It lists the contents of current directory.</p>
+<div class="codehilite"><pre><span></span><code>ls
+</code></pre></div>
+
+
+<p><strong><code>cd</code></strong> stands for "change directory". Type <code>cd</code> and then the directory you want to go to. For example, change to the Desktop from your home folder:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> Desktop
+</code></pre></div>
+
+
+<p>To go into the parent folder, up one level in the file structure, type <code>..</code> or <code>../</code> instead of a folder name, like so:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> ..
+</code></pre></div>
+
+
+<p>If you type <code>cd</code> without a folder name after, it takes you back to your home folder.</p>
+<p><strong><code>mkdir</code></strong> stands for "make directory". Type <code>mkdir</code> and then a name to make a folder. For example, make a folder called "cool_project":</p>
+<div class="codehilite"><pre><span></span><code>mkdir cool_project
+</code></pre></div>
+
+
+<p><strong><code>mv</code></strong> stands for "move". It lets you move files and folders and also rename them. To rename a file:</p>
+<div class="codehilite"><pre><span></span><code>mv oldname.txt newname.txt
+</code></pre></div>
+
+
+<p><strong><code>cp</code></strong> stands for "copy". It lets duplicate files:</p>
+<div class="codehilite"><pre><span></span><code>cp draft.txt draft_copy.txt
+</code></pre></div>
+
+
+<p><strong><code>rm</code></strong> stands for "remove". It lets you delete files:</p>
+<div class="codehilite"><pre><span></span><code>rm bad_selfie.jpg
+</code></pre></div>
+
+
+<p>Please note, <code>rm</code> will <strong>not</strong> ask for confirmation, and it will not move files to the trash. It'll just delete them immediately, so be careful.</p>
+<p><strong><code>cat</code></strong> stands for "concatenate" and it shows you the contents of a file and also allows you to join two files together. For example, to print out the entirety of the Communist Manifesto:</p>
+<div class="codehilite"><pre><span></span><code>cat manifesto.txt
+</code></pre></div>
+
+
+<p><strong><code>more</code></strong> is like <code>cat</code> but will paginate the output if it is larger than the size of your terminal window:</p>
+<div class="codehilite"><pre><span></span><code>more manifesto.txt
+</code></pre></div>
+
+
+<p>(now use the up and down arrows to go up or down by a line, the space to go down by a page and <code>q</code> to exit if needed)</p>
+<p><strong><code>file</code></strong> provides basic info about a file:</p>
+<div class="codehilite"><pre><span></span><code>file mysterfile.what
+</code></pre></div>
+
+
+<p><strong><code>sort</code></strong> sorts a file alphabetically by line and prints the output to the screen</p>
+<div class="codehilite"><pre><span></span><code>sort names.txt
+</code></pre></div>
+
+
+<p><strong><code>grep</code></strong> searches each line of a file for some input, and prints those lines to the screen. For example, the following searches for all lines in the Communist Manifesto containing the word "Communist".</p>
+<div class="codehilite"><pre><span></span><code>grep Communist manifesto.txt
+</code></pre></div>
+
+
+<hr>
+<h3>Command Line Options and Getting Help</h3>
+<p>Most commands have extra options that you can input when you run the command.  They are usually preceded by either one or two dashes (<code>-</code> or <code>--</code>).</p>
+<p>The structure of a typical command looks like this:</p>
+<div class="codehilite"><pre><span></span><code>command_name <span class="o">[</span>options<span class="o">]</span> arguments
+</code></pre></div>
+
+
+<p>("arguments" refers to the file or files your are running the command with)</p>
+<p>For example, the <code>sort</code> command outputs in ascending order by default, but you can have it use reverse order with the <code>-r</code> option, like so:</p>
+<div class="codehilite"><pre><span></span><code>sort -r manifesto.txt
+</code></pre></div>
+
+
+<p>You can also tell <code>sort</code> to only output unique lines (ie, to remove any duplicate lines) with the <code>-u</code> option:</p>
+<div class="codehilite"><pre><span></span><code>sort -u manifesto.txt
+</code></pre></div>
+
+
+<p>Finally you can combine options:</p>
+<div class="codehilite"><pre><span></span><code>sort -u -r manifesto.txt
+</code></pre></div>
+
+
+<p>Sometimes, options have parameters. For example, the <code>cut</code> command cuts out portions of each line of a file. To use it you must specify a delimiter character with the <code>-d</code> option and field number to extract with the <code>-f</code> option.  To get the first word of every line in the Communist Manifesto I might enter:</p>
+<div class="codehilite"><pre><span></span><code>cut -d <span class="s2">&quot; &quot;</span> -f <span class="m">1</span> manifesto.txt
+</code></pre></div>
+
+
+<p>To see all the options and view a manual for any command, use the <code>man</code> tool (short for "manual")</p>
+<div class="codehilite"><pre><span></span><code>man cut
+</code></pre></div>
+
+
+<p>Use the arrow keys to navigate, and <code>q</code> to exit.</p>
+<hr>
+<h3>Piping and Directing Output</h3>
+<p>Most commands will produce output on the screen. However we can also automatically save that output to the filesystem using the <code>&gt;</code> character followed by a filename.</p>
+<p>Sort a file called "names.txt", and save the output to a new file called "sorted_names.txt":</p>
+<div class="codehilite"><pre><span></span><code>sort names.txt &gt; sorted_names.txt
+</code></pre></div>
+
+
+<p><code>&gt;</code> will create a file if it does not already exist, or overwrite one if it does. You can use <code>&gt;&gt;</code> instead to append to a file.</p>
+<p>Unix also has a very powerful concept called "pipes" which allow us to chain commands together, effectively feeding the output of one command into the input of another. To do so, we use the <code>|</code> symbol.</p>
+<p>Extract all lines of the Communist Manifesto containing "Communist", then sort them.</p>
+<div class="codehilite"><pre><span></span><code>grep Communist manifesto.txt <span class="p">|</span> sort -u
+</code></pre></div>
+
+
+<p>The <code>|</code> here means "take the output of the grep command and send it to sort -u". You can use as many pipes as you desire, and combine this technique with the output redirection.</p>
+<p>Extract all lines of the Communist Manifesto containing "Communist", then sort them, then save to a new file called "sorted_communists.txt"</p>
+<div class="codehilite"><pre><span></span><code>grep Communist manifesto.txt <span class="p">|</span> sort -u &gt; sorted_communists.txt
+</code></pre></div>
+
+
+<hr>
+<h3>The Structure of the Filesytem</h3>
+<p>Everything on your computer is either a file or a folder, and these files and folders are organized hierarchically, like a tree. At the very bottom of the tree is the "root folder", indicated by a single forward slash, like so <code>/</code>. Here's a basic example of directory structure:</p>
+<div class="codehilite"><pre><span></span><code>/
+    Users/
+        sam/
+            Desktop/
+                trotsky.jpg
+                the_man_without_qualities.txt
+            Documents/
+            Downloads/
+        Guest/
+    Applications/
+    Volumes/
+</code></pre></div>
+
+
+<p>Each file and folder has a unique location on the filesystem. This location is called a "path". You can reference files and folders either by their <strong>relative</strong> path, or by their <strong>absolute</strong> or <strong>full</strong> path. In the previous examples I have been using the relative path - that is, I have been referencing files relative to where I currently am. <strong>A path is absolute if it begins with a <code>/</code></strong></p>
+<p>For example the absolute path to <code>the_man_without_qualities.txt</code> in the above filesystem is <code>/Users/sam/Desktop/the_man_without_qualities.txt</code>. I can look inside the contents of this file, from any working directory, with this command:</p>
+<div class="codehilite"><pre><span></span><code>more /Users/sam/Desktop/the_man_without_qualities.txt
+</code></pre></div>
+
+
+<p>There are a few shortcuts for dealing paths as well.</p>
+<p><code>.</code> (single dot) or './' (single dot with slash) means the current folder that I am in.</p>
+<p><code>..</code> (two dots) or <code>../</code> (two dots with slash) means the parent folder. For example, if am in my Desktop folder and I want to list the contents of my Downloads folder I could type:</p>
+<div class="codehilite"><pre><span></span><code>ls ../Downloads/
+</code></pre></div>
+
+
+<hr>
+<h3>Wildcards</h3>
+<p>It's also possible to reference multiple files using the <code>*</code> character in combination with other characters. This can be really useful in a lot of situations.</p>
+<p>For example, can list all files that begin with the word "the" like so:</p>
+<div class="codehilite"><pre><span></span><code>ls the*
+</code></pre></div>
+
+
+<p>List all jpg images:</p>
+<div class="codehilite"><pre><span></span><code>ls *.jpg
+</code></pre></div>
+
+
+<p>Make a folder called <code>images</code> and move all jpeg images into it:</p>
+<div class="codehilite"><pre><span></span><code>mkdir images
+mv *.jpg images/
+</code></pre></div>
+
+
+<hr>
+<h3>Tips</h3>
+<p>It can take a while to get used to the command line, but there are a few tips and trick that make it much easier to use.</p>
+<ul>
+<li>Use the up and down arrows to view a history of the commands you have entered.</li>
+<li>Hit the tab key to autocomplete commands and file paths</li>
+<li>Type <code>open</code> and then a filename to open the file in its default program</li>
+<li>Drag a folder or file onto the terminal to fill in its absolute path</li>
+<li>Type ctrl-a to move your cursor to the beginning of the line, and ctrl-e to the end</li>
+</ul>
+
+      </main>
+    </div>
+  </body>
+</html>

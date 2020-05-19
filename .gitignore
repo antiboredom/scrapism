@@ -1,0 +1,5 @@
+.DS_Store
+videos/
+venv/
+readings_and_resources/
+__pycache__
