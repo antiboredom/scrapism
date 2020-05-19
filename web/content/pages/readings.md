@@ -1,4 +1,4 @@
-Title: Related Readings
+Title: Readings & Resources
 sortorder: 999
 
 

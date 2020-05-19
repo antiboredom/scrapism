@@ -37,6 +37,10 @@ main {
   padding: 0px 40px;
 }
 
+img {
+  width: 100%;
+}
+
 h1,
 h2,
 h3,
