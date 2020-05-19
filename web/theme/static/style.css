@@ -23,7 +23,7 @@ li.active a {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: calc(var(--header-width) + 720px);
   margin: 40px auto;
 }
 

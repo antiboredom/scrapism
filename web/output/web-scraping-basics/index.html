@@ -39,7 +39,295 @@
     <h1>Web Scraping Basics</h1>
     
 
-    <p>Coming soon!</p>
+    <p>Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.</p>
+<h2>HTML</h2>
+<p>HTML is made up of elements. Elements are made of tags.</p>
+<p>Most elements have an opening tag, some content, and then a closing tag.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">tagname</span><span class="p">&gt;</span>some content goes here<span class="p">&lt;/</span><span class="nt">tagname</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Here's a paragraph tag:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I&#39;m a paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Different tags are used for different types of content:</p>
+<ul>
+<li><code>p</code>: paragraph of text</li>
+<li><code>a</code>: a link</li>
+<li><code>ul</code> : unordered (bulleted) list</li>
+<li><code>li</code>: a list item</li>
+<li><code>strong</code>: important text</li>
+<li><code>h1</code>: A large headline</li>
+<li><code>h2</code>: A smaller headline</li>
+<li><code>div</code>: a widely used tag to signify a division or section of content</li>
+</ul>
+<h3>Attributes</h3>
+<p>Tags can also have <strong>attributes</strong>. These are key/value pairs that declare extra information about the tag. An attribute looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">tagname</span> <span class="na">attributename</span><span class="o">=</span><span class="s">&quot;value&quot;</span><span class="p">&gt;</span>content<span class="p">&lt;/</span><span class="nt">tagname</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Some attributes can be applied to any tag. The two most important ones (for our purposes) are <code>id</code> and <code>class</code>.</p>
+<p>The <code>id</code> attribute gives a <strong>unique</strong> id to a tag. There can only by <strong>one</strong> tag with any given <code>id</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;the-most-important-paragraph&quot;</span><span class="p">&gt;</span>This is the most important paragraph.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>The <code>class</code> attribute indicates a user-defined category for a tag. Many tags (including different types of tags) can share the same class name.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort-of-important&quot;</span><span class="p">&gt;</span>I&#39;m a sort of important paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort-of-important&quot;</span><span class="p">&gt;</span>I&#39;m also a sort of important paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort-of-important&quot;</span><span class="p">&gt;</span>I&#39;m another a sort of important thing<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Some attributes are specific to certain tags.</p>
+<p>The <code>a</code> tag, for example, requires an <code>href</code> attribute that indicates where the browser should navigate to when someone clicks on it.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://whitehouse.gov&quot;</span><span class="p">&gt;</span>don&#39;t click here<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Some elements DON'T have a closing tag. The image tag, for example, doesn't have a closing tag but requires the <code>src</code> attribute to be set:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;lolcapitalism.jpg&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<h3>A Barebones Webpage</h3>
+<p>All HTML documents contain the following tags:</p>
+<ul>
+<li><code>html</code>: Surrounds the entire document</li>
+<li><code>head</code>: A tag that doesn't render to the page but contains important links to style sheets and the title tag</li>
+<li><code>title</code>: The title of the page</li>
+<li><code>body</code>: Surrounds the body of the page</li>
+</ul>
+<p>HTML elements are nested within other elements.</p>
+<p>For example, here's a complete HTML document:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Cool Website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>A Communisty Manifesto<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        Many <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>spectres<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> are haunting Europe.
+        Here are some of them:
+      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>The first spectre<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>The second spectre<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>The third spectre<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;so-many-spectres.jpg&quot;</span><span class="p">&gt;</span>
+
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Keep reading to find out all of the spectres currently haunting Europe!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Note the indentations. These are completely optional (the machine doesn't care if you indent or not), but it's good practice to always indent elements inside of other elements because it helps show the structure of the document.</p>
+<h2>CSS</h2>
+<p>CSS stands for "cascading stylesheet".</p>
+<p>CSS determines the look of a website, both positioning elements on the screen and giving them visual attributes like color, or font size.</p>
+<p>Many of the particulars of CSS styling are irrelevant for this guide. What matters for us is the syntax that determines how styles are applied, because it provides a handy system for isolating and extracting particular elements from an HTML document.</p>
+<p>A css style is made of a <code>selector</code> followed by <code>rules</code>. We don't care about the rules, just the selector. Here is a bit of fake CSS:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">selector</span> <span class="p">{</span> <span class="c">/* the bit before the squiqqly is called the &quot;selector&quot; */</span>
+  <span class="n">rule</span><span class="p">:</span> <span class="n">some</span> <span class="n">rule</span> <span class="n">here</span><span class="p">;</span> <span class="c">/* these are rules, we don&#39;t care about them */</span>
+  <span class="n">another-rule</span><span class="p">:</span> <span class="n">more</span> <span class="n">rules</span><span class="p">;</span> <span class="c">/* more rules */</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>The selector determines what gets styled. Selectors can be used to target all instances of a particular tag, elements with particular classes or ids, and other more complex rules.</p>
+<p>You can target every instance of a tag by referencing the name of the tag:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">p</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You can also give style to tags that have particular ids or classes.</p>
+<p>Select classes by preceding the class name with a period <code>.</code> character. For example, select all tags with the "proletariat" class:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="nc">proletariate</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Select ids by preceding the id name with a hashtag <code>#</code> character.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">#</span><span class="nn">the-manifesto</span> <span class="p">{</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">orange</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You can also select elements that are <strong><em>inside</em></strong> other elements, by first writing the parent element, then a space, then the child element.</p>
+<p>For example, this selects <code>a</code> tags that are INSIDE <code>p</code> tags:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">p</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You can also do this with classes and ids. This selects <code>span</code> tags found inside elements with the <code>author</code> class.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="nc">author</span> <span class="nt">span</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">pink</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You can use the comma to get multiple selectors. The following grabs h1 tags and h2 tags:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">orange</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Here's a <a href="https://www.w3schools.com/cssref/css_selectors.asp">full list of css selectors</a>.</p>
+<hr>
+<h2>Web Scraping</h2>
+<p>Although it's possible to use Python's standard library to scrape the web, I find it a bit easier to use community-developed tools built for the purpose. There are a number of these available and all have merits. For the sake of this tutorial we will use two external libraries: <code>requests</code> which makes performing network requests easier, and <code>beautifulsoup</code>, which parses html.</p>
+<h2>Installing Python packages with <code>pip</code></h2>
+<p>Since these tools don't come pre-packaged with Python, we need to install them using Python's package manager, <code>pip</code>.</p>
+<p>You can either install packages globally on your system, for just your user, or you can set up a per-project "virtual environment". For the sake of starting quickly, we'll be using the easiest option, which installs into your home folder.</p>
+<p>First, let's install the <code>requests</code> library. Open the terminal and type:</p>
+<div class="codehilite"><pre><span></span><code>pip3 install requests
+</code></pre></div>
+
+
+<p>Then, install beautifulsoup (note that the package name is "beautifulsoup4"):</p>
+<div class="codehilite"><pre><span></span><code>pip3 install beautifulsoup4
+</code></pre></div>
+
+
+<p>These packages will now be available to all your python scripts.</p>
+<h2>Basics</h2>
+<p>The basic workflow for most scraping projects is:</p>
+<ol>
+<li>Download html from a url</li>
+<li>Identify what elements you are interested in extracting</li>
+<li>Extract text or attributes via CSS selectors</li>
+</ol>
+<p>To start, you must import the <code>requests</code> library, and then use <code>requests.get</code> to retrieve a web page.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># import the requests library</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># get the front page of the New York Times</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://nytimes.com/&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Now you can use css selectors to pull out certain elements with the <code>find</code> method, which takes a css selector and returns a list of matching elements.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># get a list of all h1 tags based on css selectors</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The <code>find</code> method can take any css selector. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">all_header_tags</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;h1,h2,h3,h4,h5,h6&quot;</span><span class="p">)</span>
+
+<span class="n">links_with_a_classname</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a.cool-link&quot;</span><span class="p">)</span>
+
+<span class="n">images_inside_divs_inside_main</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;#main div img&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>If you just want a single element rather than a list of them, add <code>first=True</code> to <code>find</code></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># the first headline</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</code></pre></div>
+
+
+<p>You can extract text with from elements using the <code>text</code> keyword, or you can extract html attributes with the <code>attrs</code> dictionary. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># get all urls linked to from the page</span>
+<span class="n">links</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">))</span>
+
+<span class="c1"># get all image urls</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+
+<h3>Nested elements</h3>
+<p>You can also call <code>find</code> on other elements. For example, imagine the following HTML structure:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Near the Wild Heart<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Clarice Lispector<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>The Man Without Qualities<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Robert Musil<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Orlando<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Virginia Woolf<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>To extract titles and authors, you might do something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">books</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;article&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.author&#39;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3>Multiple pages</h3>
+<p>Here's a complete example, showing how to get post titles and bodies from craigslist. The script grabs all post titles and urls from a craigslist page, and then visits each post, downloading the main description. Note how we use <code>time.sleep</code> to pause between requests.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">HTMLSession</span><span class="p">()</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://newyork.craigslist.org/d/missed-connections/search/mis&quot;</span><span class="p">)</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.result-title&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;#postingbody&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">text</span><span class="p">):</span> <span class="c1"># only if we found something</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1"># sleep for 0.2 seconds as a curtesy to craigslist</span>
+</code></pre></div>
+
+
+<h2>Javascript</h2>
+<p>Quite frequently you'll find that <code>requests_html</code> fails to find the elements that are visible on the screen when you load a page up in a browser. This is typically (but not always) because the page is loading content with Javascript <strong>after</strong> the initial HTML is loaded. This is extremely common, but fortunately, requests_html has the ability to load pages with Javascript using the <code>render</code> function. Just call <code>render</code> before you start using <code>find</code>.</p>
+<p>Please note that this literally downloads an entire new version of Chrome to your home folder the first time you call it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">HTMLSession</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.nytimes.com/&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+<span class="n">links</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2>Pagination</h2>
+<p>to come!</p>
 
       </main>
     </div>
