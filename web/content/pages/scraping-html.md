@@ -229,53 +229,63 @@ To start, you must import the `requests` library, and then use `requests.get` to
 # import the requests library
 import requests
 
+# import beautifulsoup
+from bs4 import BeautifulSoup
+
 # get the front page of the New York Times
 response = requests.get('https://nytimes.com/')
+
+# create a beautifulsoup object using the html
+soup = BeautifulSoup(response.text)
 ```
 
-Now you can use css selectors to pull out certain elements with the `find` method, which takes a css selector and returns a list of matching elements.
+Now you can use css selectors to pull out certain elements with the `select` method, which takes a css selector and returns a list of matching elements.
 
 ```python
 # get a list of all h1 tags based on css selectors
-titles = response.html.find("h1")
+titles = soup.select("h1")
 for t in titles:
-	print(t.text)
+  print(t.text)
 ```
 
-The `find` method can take any css selector. For example:
+The `select` method can take any css selector. For example:
 
 ```python
-all_header_tags = response.html.find("h1,h2,h3,h4,h5,h6")
+all_header_tags = soup.select("h1,h2,h3,h4,h5,h6")
 
-links_with_a_classname = response.html.find("a.cool-link")
+links_with_a_classname = soup.select("a.cool-link")
 
-images_inside_divs_inside_main = response.html.find("#main div img")
+images_inside_divs_inside_main = soup.select("#main div img")
 ```
 
-If you just want a single element rather than a list of them, add `first=True` to `find`
+`soup.select` returns a list. If you just want a single element, you can either get the first element of the returned list, or use the `select_one` method:
+
 
 ```python
 # the first headline
-title = response.html.find("h1", first=True).text
+title = soup.select("h1")[0]
+
+# or use soup.select_one
+title = soup.select_one("h1")
 ```
 
-You can extract text with from elements using the `text` keyword, or you can extract html attributes with the `attrs` dictionary. For example:
+You can extract text with from elements using the `text` keyword, or you can extract html attributes which are automatically mapped to a python dictionary. For example:
 
 ```python
 # get all urls linked to from the page
-links = response.html.find('a')
+links = soup.select('a')
 for link in links:
-	print(link.attrs.get("href"))
+	print(link.get("href"))
 
 # get all image urls
-images = response.html.find('img')
+images = soup.select('img')
 for image in images:
-	print(image.attrs.get("src"))
+	print(image.get("src"))
 ```
 
 ### Nested elements
 
-You can also call `find` on other elements. For example, imagine the following HTML structure:
+You can also call `select` on individual elements, rather than the entire html page. For example, imagine the following HTML structure:
 
 ```html
 <article>
@@ -297,59 +307,21 @@ You can also call `find` on other elements. For example, imagine the following H
 To extract titles and authors, you might do something like this:
 
 ```python
-books = response.html.find('article')
+books = soup.select('article')
 for article in articles:
-	title = article.find('h2', first=True).text
-	author = article.find('.author', first=True).text
+	title = article.select_one('h2').text
+	author = article.select_one('.author').text
 	print(title, author)
 ```
 
-### Multiple pages
-
-Here's a complete example, showing how to get post titles and bodies from craigslist. The script grabs all post titles and urls from a craigslist page, and then visits each post, downloading the main description. Note how we use `time.sleep` to pause between requests.
-
-```python
-import time
-from requests_html import HTMLSession
-
-session = HTMLSession()
-r = session.get("https://newyork.craigslist.org/d/missed-connections/search/mis")
-
-titles = r.html.find(".result-title")
-for title in titles:
-	url = title.attrs.get("href")
-	name = title.text
-
-	r = session.get(url)
-	content = r.html.find("#postingbody", first=True)
-
-	if (content.text): # only if we found something
-		print (content.text)
-
-	sleep(0.2) # sleep for 0.2 seconds as a curtesy to craigslist
-```
-
-
 ## Javascript
 
-Quite frequently you'll find that `requests_html` fails to find the elements that are visible on the screen when you load a page up in a browser. This is typically (but not always) because the page is loading content with Javascript **after** the initial HTML is loaded. This is extremely common, but fortunately, requests_html has the ability to load pages with Javascript using the `render` function. Just call `render` before you start using `find`.
+Quite frequently you'll find that `beautifulsoup` fails to find the elements that are visible on the screen when you load a page up in a browser. This is typically (but not always) because the page is loading content with Javascript **after** the initial HTML is loaded. We'll cover this case in a later section
 
-Please note that this literally downloads an entire new version of Chrome to your home folder the first time you call it.
-
-```python
-from requests_html import HTMLSession
-
-session = HTMLSession()
-
-response = session.get('https://www.nytimes.com/')
-response.html.render()
-
-links = response.html.find('a')
-```
 
 ## Pagination
 
-to come!
+Coming soon
 
 
 
