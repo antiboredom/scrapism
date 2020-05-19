@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = "Sam Lavigne"
 SITENAME = "Scrapism"
-SITEURL = "https://scrapism.lav.io"
+SITEURL = ''
 THEME = "./theme"
 DISPLAY_PAGES_ON_MENU = True
 PAGE_URL = "{slug}/"
