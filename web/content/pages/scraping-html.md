@@ -192,7 +192,7 @@ Here's a [full list of css selectors](https://www.w3schools.com/cssref/css_selec
 
 ## Web Scraping
 
-Although it's possible to use Python's standard library to scrape the web, I find it a bit easier to use community-developed tools built for the purpose. There are a number of these available and all have merits. For the sake of this tutorial we will use two external libraries: `requests` which makes performing network requests easier, and `beautifulsoup`, which parses html.
+Although it's possible to use Python's standard library to scrape the web, I find it a bit easier to use community-developed tools built for the purpose. There are a number of these available and all have merits. For the sake of this tutorial we will use two external libraries: [requests](https://requests.readthedocs.io/en/master/) which makes performing network requests easier, and [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), which parses html.
 
 ## Installing Python packages with `pip`
 
