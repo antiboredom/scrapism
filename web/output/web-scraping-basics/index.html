@@ -39,7 +39,9 @@
     <h1>Web Scraping Basics</h1>
     
 
-    <p>Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.</p>
+    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+
+<p>Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.</p>
 <h2>HTML</h2>
 <p>HTML is made up of elements. Elements are made of tags.</p>
 <p>Most elements have an opening tag, some content, and then a closing tag.</p>
@@ -298,8 +300,75 @@
 </code></pre></div>
 
 
-<h2>Javascript</h2>
-<p>Quite frequently you'll find that <code>beautifulsoup</code> fails to find the elements that are visible on the screen when you load a page up in a browser. This is typically (but not always) because the page is loading content with Javascript <strong>after</strong> the initial HTML is loaded. We'll cover this case in a later section</p>
+<h2>Examples</h2>
+<p>Here's a quick example that grabs the total number of job listings in every category on craigslist:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://newyork.craigslist.org&quot;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="n">job_cats</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.jobs .cats a&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">job_cats</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">full_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">full_url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.totalcount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>This example gets the full listings titles for every job in a particular category:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.result-title&quot;</span><span class="p">)</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+    <span class="c1"># or</span>
+    <span class="c1"># output = [i.text.strip() for i in titles]</span>
+
+    <span class="k">return</span> <span class="n">output</span>
+
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://newyork.craigslist.org/search/csr&quot;</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+    <span class="n">start</span> <span class="o">+=</span> <span class="mi">120</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2>Problems</h2>
+<p>The most common problem you'll run into when using this method is that the elements you see in your browser somehow don't appear when you try to parse the html with <code>beautifulsoup</code>. There are two reasons why this might be the case.</p>
+<ol>
+<li>The content you see in the browser is being loaded in with Javascript, <strong>after</strong> the initial HTML is loaded. This is very common in 2020, and we'll cover this case in a later section.</li>
+<li>The server has detected that you are running a script and has decided to block your access. Depending on the site you are trying to scrape, you may be able to circumvent this by adding a user-agent string to your request.</li>
+</ol>
 <h2>Pagination</h2>
 <p>Coming soon</p>
 

@@ -1,6 +1,8 @@
 Title: Web Scraping Basics
 sortorder: 444
 
+<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+
 Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.
 
 ## HTML
@@ -314,9 +316,79 @@ for article in articles:
 	print(title, author)
 ```
 
-## Javascript
+## Examples
 
-Quite frequently you'll find that `beautifulsoup` fails to find the elements that are visible on the screen when you load a page up in a browser. This is typically (but not always) because the page is loading content with Javascript **after** the initial HTML is loaded. We'll cover this case in a later section
+Here's a quick example that grabs the total number of job listings in every category on craigslist:
+
+```python
+from bs4 import BeautifulSoup
+import requests
+
+base_url = "https://newyork.craigslist.org"
+r = requests.get(base_url)
+
+soup = BeautifulSoup(r.text, "html.parser")
+job_cats = soup.select(".jobs .cats a")
+
+for job in job_cats:
+    url = job.get("href")
+    name = job.text.strip()
+    full_url = base_url + url
+    r = requests.get(full_url)
+    soup = BeautifulSoup(r.text, "html.parser")
+    total = soup.select_one(".totalcount").text.strip()
+    print(name, total)
+
+```
+
+This example gets the full listings titles for every job in a particular category:
+
+```python
+from bs4 import BeautifulSoup
+import requests
+import time
+
+
+def get_page(url, start):
+    params = {"s": start}
+    r = requests.get(url, params=params)
+
+    soup = BeautifulSoup(r.text, "html.parser")
+    titles = soup.select(".result-title")
+
+    output = []
+    for item in titles:
+        output.append(item.text.strip())
+
+    # or
+    # output = [i.text.strip() for i in titles]
+
+    return output
+
+
+url = "https://newyork.craigslist.org/search/csr"
+start = 0
+
+while True:
+    results = get_page(url, start)
+
+    if len(results) == 0:
+        break
+
+    for r in results:
+        print(r)
+
+    start += 120
+
+    time.sleep(1)
+```
+
+## Problems
+
+The most common problem you'll run into when using this method is that the elements you see in your browser somehow don't appear when you try to parse the html with `beautifulsoup`. There are two reasons why this might be the case.
+
+1. The content you see in the browser is being loaded in with Javascript, **after** the initial HTML is loaded. This is very common in 2020, and we'll cover this case in a later section.
+2. The server has detected that you are running a script and has decided to block your access. Depending on the site you are trying to scrape, you may be able to circumvent this by adding a user-agent string to your request.
 
 
 ## Pagination
