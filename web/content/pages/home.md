@@ -16,4 +16,4 @@ I define "scrapism" as the practice of web scraping for artistic, emotional, and
 
 Feel free to <a href="mailto:lavigne@saaaam.com">email me</a> with comments, questions, and corrections.
 
-![Riot Gear for sale on Alibaba]({filename}/images/baba.jpg)
+![Riot Gear for sale on Alibaba]({static}/images/baba.jpg)

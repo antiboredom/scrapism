@@ -316,9 +316,21 @@ for article in articles:
 	print(title, author)
 ```
 
+## Using the Web Inspector
+Every site you scrape will be a bit different, and it can sometimes be difficult to figure out what css selectors to use. You may need to experiment to figure out what works. Fortunately, there's a tool built into most browsers that can help you with this, called the "web inspector".
+
+To use the inspector, simply right click on the element that you are interested in, and select "inspect" (or "inspect element").
+
+![Web inspector menu]({static}/images/inspector1.png)
+
+This will open a new panel in your browser that shows the source code of the page, highlighting the element you selected. You can mouse over other elements in the source code to see which ones they correspond to on the page.
+
+
+![Web inspector menu]({static}/images/inspector2.png)
+
 ## Examples
 
-Here's a quick example that grabs the total number of job listings in every category on craigslist:
+Here's a quick example that grabs the total number of job listings in every category on craigslist (I go over this one in the video at the top of the page):
 
 ```python
 from bs4 import BeautifulSoup
