@@ -13,8 +13,8 @@
       <meta property="og:title" content="Scrapism" />
       <meta property="og:image" content="https://scrapism.lav.io/images/baba.jpg" />
       <title>Scrapism - Web Scraping Basics</title>
-      <link rel="stylesheet" href="/theme/syntax.css" />
-      <link rel="stylesheet" href="/theme/style.css" />
+      <link rel="stylesheet" href="https://scrapism.lav.io/theme/syntax.css" />
+      <link rel="stylesheet" href="https://scrapism.lav.io/theme/style.css" />
 
 
   </head>
@@ -23,15 +23,15 @@
     <div class="container">
       <header>
         <ol role="navigation">
-            <li><a href="/">Scrapism</a></li>
-            <li><a href="/intro-to-the-command-line/">Intro to the Command Line</a></li>
-            <li><a href="/intro-to-python/">Intro to Python</a></li>
-            <li class="active"><a href="/web-scraping-basics/">Web Scraping Basics</a></li>
-            <li><a href="/using-real-browsers/">Using Real Browsers</a></li>
-            <li><a href="/scraping-xhr-requests/">Scraping XHR Requests</a></li>
-            <li><a href="/downloading-media/">Downloading Media</a></li>
-            <li><a href="/using-scrapy/">Using Scrapy</a></li>
-            <li><a href="/readings-resources/">Readings & Resources</a></li>
+            <li><a href="https://scrapism.lav.io/">Scrapism</a></li>
+            <li><a href="https://scrapism.lav.io/intro-to-the-command-line/">Intro to the Command Line</a></li>
+            <li><a href="https://scrapism.lav.io/intro-to-python/">Intro to Python</a></li>
+            <li class="active"><a href="https://scrapism.lav.io/web-scraping-basics/">Web Scraping Basics</a></li>
+            <li><a href="https://scrapism.lav.io/using-real-browsers/">Using Real Browsers</a></li>
+            <li><a href="https://scrapism.lav.io/scraping-xhr-requests/">Scraping XHR Requests</a></li>
+            <li><a href="https://scrapism.lav.io/downloading-media/">Downloading Media</a></li>
+            <li><a href="https://scrapism.lav.io/using-scrapy/">Using Scrapy</a></li>
+            <li><a href="https://scrapism.lav.io/readings-resources/">Readings & Resources</a></li>
         </ol>
       </header>
 
@@ -39,7 +39,9 @@
     <h1>Web Scraping Basics</h1>
     
 
-    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+    <div class="embed" style="margin-bottom:20px"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+
+<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/K79Oh39mkzs" frameborder="0" allowfullscreen></iframe></div>
 
 <p>Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.</p>
 <h2>HTML</h2>
@@ -303,9 +305,9 @@
 <h2>Using the Web Inspector</h2>
 <p>Every site you scrape will be a bit different, and it can sometimes be difficult to figure out what css selectors to use. You may need to experiment to figure out what works. Fortunately, there's a tool built into most browsers that can help you with this, called the "web inspector".</p>
 <p>To use the inspector, simply right click on the element that you are interested in, and select "inspect" (or "inspect element").</p>
-<p><img alt="Web inspector menu" src="/images/inspector1.png"></p>
+<p><img alt="Web inspector menu" src="https://scrapism.lav.io/images/inspector1.png"></p>
 <p>This will open a new panel in your browser that shows the source code of the page, highlighting the element you selected. You can mouse over other elements in the source code to see which ones they correspond to on the page.</p>
-<p><img alt="Web inspector menu" src="/images/inspector2.png"></p>
+<p><img alt="Web inspector menu" src="https://scrapism.lav.io/images/inspector2.png"></p>
 <h2>Examples</h2>
 <p>Here's a quick example that grabs the total number of job listings in every category on craigslist (I go over this one in the video at the top of the page):</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>

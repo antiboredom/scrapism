@@ -1,7 +1,8 @@
 Title: Web Scraping Basics
 sortorder: 444
 
-<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+<div class="embed" style="margin-bottom:20px"><iframe src="https://www.youtube-nocookie.com/embed/hA1ZsxE8VJg" frameborder="0" allowfullscreen></iframe></div>
+<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/K79Oh39mkzs" frameborder="0" allowfullscreen></iframe></div>
 
 Web scraping involves downloading and then parsing web pages, which means you need to have some basic understanding of how HTML and CSS work.
 
