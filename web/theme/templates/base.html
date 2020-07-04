@@ -13,7 +13,7 @@
       <meta name="twitter:image" content="https://scrapism.lav.io/images/baba.jpg" />
       <meta property="og:title" content="Scrapism" />
       <meta property="og:image" content="https://scrapism.lav.io/images/baba.jpg" />
-      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+      <title>Scrapism</title>
       <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/syntax.css" />
       <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/style.css" />
     {% endblock head %}
@@ -27,7 +27,12 @@
             <li><a href="{{ link }}">{{ title }}</a></li>
           {% endfor %}
           {% for pg in pages %}
-            <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+            <li{% if pg == page %} class="active"{% endif %}>
+              <a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a>
+              {% if pg == page and pg.toc %}
+                {{page.toc}}
+              {% endif %}
+            </li>
           {% endfor %}
         </ol>
       </header>

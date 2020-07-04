@@ -5,11 +5,9 @@ sortorder: 222
 
 <br>
 
-## Notes
+## Setup
 
 The command line is a text-based interface for interacting with your computer. From the command line you can launch programs, view files, and manipulate your file system by making, moving, and copying files and directories. You can think of it as the Finder in Mac, without the graphic interface, but much more powerful.
-
-### Setup
 
 On a Mac you can access the command line by opening up the `Terminal` application, located in `/Applications/Utilities/Terminal`
 
@@ -19,7 +17,7 @@ To get started on Windows you will need to set up the Windows Subsystem for Linu
 ---
 
 
-### The Prompt
+## The Prompt
 
 When you open up your terminal application you'll see something like this:
 
@@ -33,7 +31,7 @@ The basic use of the command line is: 1) you type a command, 2) you hit return, 
 
 ---
 
-### Basic Navigation & File Operations
+## Basic Navigation & File Operations
 
 *Please note I use the word "directory" and "folder" interchangeably.*
 
@@ -41,7 +39,7 @@ When you open a new terminal window, you are placed inside your home folder. On 
 
 To see the folder you are currently in, type: `pwd` and hit return. `pwd` stands for "print working directory", or in other words, "show me the directory I am currently working from".
 
-#### Here are some basic commands for getting around, making, deleting and copying files and folders.
+### Getting around, making, deleting and copying files and folders.
 
 
 **`pwd`** stands for "print working directory". It prints out where you are:
@@ -130,7 +128,7 @@ grep Communist manifesto.txt
 ---
 
 
-### Command Line Options and Getting Help
+## Command Line Options and Getting Help
 
 Most commands have extra options that you can input when you run the command.  They are usually preceded by either one or two dashes (`-` or `--`).
 
@@ -176,7 +174,7 @@ Use the arrow keys to navigate, and `q` to exit.
 
 ---
 
-### Piping and Directing Output
+## Piping and Directing Output
 
 Most commands will produce output on the screen. However we can also automatically save that output to the filesystem using the `>` character followed by a filename.
 
@@ -206,7 +204,7 @@ grep Communist manifesto.txt | sort -u > sorted_communists.txt
 
 ---
 
-### The Structure of the Filesytem
+## The Structure of the Filesystem
 
 Everything on your computer is either a file or a folder, and these files and folders are organized hierarchically, like a tree. At the very bottom of the tree is the "root folder", indicated by a single forward slash, like so `/`. Here's a basic example of directory structure:
 
@@ -244,7 +242,7 @@ ls ../Downloads/
 
 ---
 
-### Wildcards
+## Wildcards
 
 It's also possible to reference multiple files using the `*` character in combination with other characters. This can be really useful in a lot of situations.
 
@@ -269,7 +267,7 @@ mv *.jpg images/
 
 ---
 
-### Tips
+## Tips
 
 It can take a while to get used to the command line, but there are a few tips and trick that make it much easier to use.
 

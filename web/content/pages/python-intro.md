@@ -3,7 +3,7 @@ sortorder: 333
 
 <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/Ae4Ow5DvYtE" frameborder="0" allowfullscreen></iframe></div>
 
-## Notes
+## Prerequisites
 
 There are two versions of Python, Python 2 and Python 3. For this guide we will be using Python 3, which you will need to install on your computer. The easiest way to do this, on a Mac, is with Homebrew, a tool that allows you to install and manage command line programs.
 
@@ -36,7 +36,7 @@ To create and edit Python files you'll need a good text editor, specifically des
 
 ---
 
-## Basics
+## Python Basics
 
 Python is a command line application, just like `cat`, `grep` and `sort`.
 

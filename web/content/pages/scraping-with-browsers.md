@@ -135,12 +135,57 @@ driver.save_screenshot("lol.png")
 
 ## Puppeteer {#puppeteer}
 
-[Puppeteer](https://pptr.dev/) is a Node.js library written by Google for automating Chrome. There is also an (unofficial) Python version of it called [pyppeteer](https://github.com/pyppeteer/pyppeteer).
+[Puppeteer](https://pptr.dev/) is a Node.js library written by Google for automating Chrome. There is also an (unofficial) python version of it called [pyppeteer](https://github.com/pyppeteer/pyppeteer).
 
-More to come!
+Since the rest of this guide uses python, I'll cover pyppeteer here (although you are most welcome to the original nodejs version if you prefer). 
+
+Scraping with pyppeteer involves a slightly different workflow than selenium. Notably, it makes use of asynchronous function calls to load pages, and requires that you execute javascript functions to extract content.
+
+Install pyppeteer with pip:
+
+```python
+pip3 install pyppeteer
+```
+
+Here's a basic example that scrapes product names from Alibaba matching the search term "labor camp":
+
+```python
+import asyncio
+from pyppeteer import launch
+
+async def main():
+    # create a new browser object and open a blank page
+    browser = await launch()
+    page = await browser.newPage()
+
+    # visit a url
+    url = 'https://www.alibaba.com/products/labor_camp.html?IndexArea=product_en&page=1'
+    await page.goto(url)
+
+    # querySelectorAll() selects elements matching a css query
+    items = await page.querySelectorAll(".organic-gallery-offer-outter")
+
+    # loop over elements
+    for product in items:
+
+        # find h4 tags inside item listings
+        name_element = await product.querySelector("h4")
+
+        # extract the text content
+        name = await page.evaluate('(element) => element.textContent', name_element)
+
+        print(name)
+
+    # close the browser
+    await browser.close()
+
+asyncio.get_event_loop().run_until_complete(main())
+```
+
+Note that to actually extract text or attributes from elements you must use the `page.evaluate` function to execute javascript inside the browser, passing in elements that you have selected using `querySelector` or `querySelectorAll`.
 
 ## requests_html
 
 [requests_html](https://requests-html.kennethreitz.org/) is a convenient library that combines `requests`, `pyquery` and `pyppeteer`. It provides less control than just using pyppeteer directly, but is extremely convenient for certain use cases.
 
-More to come!
+(Examples to come...)

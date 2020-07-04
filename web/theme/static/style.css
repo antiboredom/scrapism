@@ -17,8 +17,11 @@ header ol a {
   text-decoration: none;
 }
 
-li.active a {
-  /* background-color: #eee; */
+#toc ul {
+  list-style: lower-alpha;
+}
+
+li.active > a {
   text-decoration: underline;
 }
 

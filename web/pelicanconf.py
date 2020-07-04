@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = "Sam Lavigne"
 SITENAME = "Scrapism"
-SITEURL = ''
+SITEURL = ""
 THEME = "./theme"
 DISPLAY_PAGES_ON_MENU = True
 PAGE_URL = "{slug}/"
@@ -50,6 +50,14 @@ TAG_SAVE_AS = False
 TAGS_SAVE_AS = False
 CATEGORY_SAVE_AS = False
 
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pelican-toc"]
+
+TOC = {
+    "TOC_HEADERS": "^h[1-2]",
+    "TOC_RUN": "true",
+    "TOC_INCLUDE_TITLE": "false",
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

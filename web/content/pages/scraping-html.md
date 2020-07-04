@@ -197,7 +197,7 @@ Here's a [full list of css selectors](https://www.w3schools.com/cssref/css_selec
 
 Although it's possible to use Python's standard library to scrape the web, I find it a bit easier to use community-developed tools built for the purpose. There are a number of these available and all have merits. For the sake of this tutorial we will use two external libraries: [requests](https://requests.readthedocs.io/en/master/) which makes performing network requests easier, and [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), which parses html.
 
-## Installing Python packages with `pip`
+### Installing Python packages with `pip`
 
 Since these tools don't come pre-packaged with Python, we need to install them using Python's package manager, `pip`.
 
@@ -217,7 +217,7 @@ pip3 install beautifulsoup4
 
 These packages will now be available to all your python scripts.
 
-## Basics
+### Basics
 
 The basic workflow for most scraping projects is:
 
@@ -317,7 +317,7 @@ for article in articles:
 	print(title, author)
 ```
 
-## Using the Web Inspector
+## The Web Inspector
 Every site you scrape will be a bit different, and it can sometimes be difficult to figure out what css selectors to use. You may need to experiment to figure out what works. Fortunately, there's a tool built into most browsers that can help you with this, called the "web inspector".
 
 To use the inspector, simply right click on the element that you are interested in, and select "inspect" (or "inspect element").
