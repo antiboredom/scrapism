@@ -1,6 +1,7 @@
 :root {
   --header-width: 300px;
   --vertical-padding: 20px;
+  --content-width: 720px;
 }
 
 body {
@@ -26,7 +27,7 @@ li.active > a {
 }
 
 .container {
-  max-width: calc(var(--header-width) + 720px);
+  max-width: calc(var(--header-width) + var(--content-width));
   margin: 40px auto;
 }
 
@@ -109,6 +110,41 @@ section {
   height: 100%;
 }
 
+code {
+  white-space: pre-wrap;
+  overflow: auto;
+  background-color: #eee;
+  word-wrap: break-word;
+}
+
+.codehilite {
+  font-size: 0.9em;
+  padding: 1px 0px 1px 6px;
+  margin-bottom: 16px;
+  position: relative;
+  margin-right: calc(-0.5 * (100vw - var(--header-width) - var(--content-width)))
+}
+
+.codehilite pre {
+  counter-reset: linecounter;
+  padding-left: 1em;
+}
+
+.codehilite pre span.code-line {
+  counter-increment: linecounter;
+  padding-left: 1em;
+  text-indent: -1em;
+  display: inline-block;
+}
+
+.codehilite pre span.code-line:before {
+  content: counter(linecounter);
+  padding-right: 1em;
+  display: inline-block;
+  color: #aaa;
+  text-align: right;
+}
+
 @media (max-width: 850px) {
   header {
     position: static;
@@ -116,5 +152,8 @@ section {
   main {
     margin: 0;
     padding: 20px;
+  }
+  .codehilite {
+    margin-right: 0;
   }
 }

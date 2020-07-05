@@ -35,7 +35,7 @@ DEFAULT_PAGINATION = False
 
 MARKDOWN = {
     "extension_configs": {
-        "markdown.extensions.codehilite": {"css_class": "codehilite"},
+        "markdown.extensions.codehilite": {"css_class": "codehilite", "linenums": False},
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},
     },
@@ -51,7 +51,8 @@ TAGS_SAVE_AS = False
 CATEGORY_SAVE_AS = False
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["pelican-toc"]
+PLUGINS = ["pelican-toc", "better_codeblock_line_numbering"]
+# PLUGINS = ["pelican-toc"]
 
 TOC = {
     "TOC_HEADERS": "^h[1-2]",
@@ -60,4 +61,4 @@ TOC = {
 }
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
