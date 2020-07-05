@@ -141,7 +141,7 @@ code {
   content: counter(linecounter);
   padding-right: 1em;
   display: inline-block;
-  color: #aaa;
+  color: #bbb;
   text-align: right;
 }
 
