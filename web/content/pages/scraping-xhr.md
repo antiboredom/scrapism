@@ -11,7 +11,7 @@ To see what network requests your browser is making, first open up your develope
 
 Then click the `Network` button. You should see a list of all the requests your browser has made for the page you're on (you may need to refresh first).
 
-![The network inspector]({static}/images/network1.png)
+![The network inspector]({static}/images/network-tab.png)
 
 This list contains the initial HTML page, stylesheets, JavaScript files, images, and more. Typically this is a bit overwhelming. You can filter the list to only view specific requests by selecting requests types from the top bar.
 
