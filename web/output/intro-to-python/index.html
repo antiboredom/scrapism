@@ -12,9 +12,9 @@
       <meta name="twitter:image" content="https://scrapism.lav.io/images/baba.jpg" />
       <meta property="og:title" content="Scrapism" />
       <meta property="og:image" content="https://scrapism.lav.io/images/baba.jpg" />
-      <title>Scrapism - Intro to Python</title>
-      <link rel="stylesheet" href="https://scrapism.lav.io/theme/syntax.css" />
-      <link rel="stylesheet" href="https://scrapism.lav.io/theme/style.css" />
+      <title>Scrapism</title>
+      <link rel="stylesheet" href="../theme/syntax.css" />
+      <link rel="stylesheet" href="../theme/style.css" />
 
 
   </head>
@@ -23,15 +23,34 @@
     <div class="container">
       <header>
         <ol role="navigation">
-            <li><a href="https://scrapism.lav.io/">Scrapism</a></li>
-            <li><a href="https://scrapism.lav.io/intro-to-the-command-line/">Intro to the Command Line</a></li>
-            <li class="active"><a href="https://scrapism.lav.io/intro-to-python/">Intro to Python</a></li>
-            <li><a href="https://scrapism.lav.io/web-scraping-basics/">Web Scraping Basics</a></li>
-            <li><a href="https://scrapism.lav.io/using-real-browsers/">Using Real Browsers</a></li>
-            <li><a href="https://scrapism.lav.io/scraping-xhr-requests/">Scraping XHR Requests</a></li>
-            <li><a href="https://scrapism.lav.io/downloading-media/">Downloading Media</a></li>
-            <li><a href="https://scrapism.lav.io/using-scrapy/">Using Scrapy</a></li>
-            <li><a href="https://scrapism.lav.io/readings-resources/">Readings & Resources</a></li>
+            <li>
+              <a href="../">Scrapism</a>
+            </li>
+            <li>
+              <a href="../intro-to-the-command-line/">Intro to the Command Line</a>
+            </li>
+            <li class="active">
+              <a href="../intro-to-python/">Intro to Python</a>
+                <div id="toc"><ul><li><a class="toc-href" href="#prerequisites" title="Prerequisites">Prerequisites</a></li><li><a class="toc-href" href="#python basics" title="Python Basics">Python Basics</a></li></ul></div>
+            </li>
+            <li>
+              <a href="../web-scraping-basics/">Web Scraping Basics</a>
+            </li>
+            <li>
+              <a href="../using-real-browsers/">Using Real Browsers</a>
+            </li>
+            <li>
+              <a href="../scraping-xhr/">Scraping XHR</a>
+            </li>
+            <li>
+              <a href="../downloading-editing-media/">Downloading & Editing Media</a>
+            </li>
+            <li>
+              <a href="../using-scrapy/">Using Scrapy</a>
+            </li>
+            <li>
+              <a href="../readings-resources/">Readings & Resources</a>
+            </li>
         </ol>
       </header>
 
@@ -39,23 +58,18 @@
     <h1>Intro to Python</h1>
     
 
-    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/Ae4Ow5DvYtE" frameborder="0" allowfullscreen></iframe></div>
-
-<h2>Notes</h2>
+    <div class="embed"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube-nocookie.com/embed/Ae4Ow5DvYtE"></iframe></div>
+<h2 id="prerequisites">Prerequisites</h2>
 <p>There are two versions of Python, Python 2 and Python 3. For this guide we will be using Python 3, which you will need to install on your computer. The easiest way to do this, on a Mac, is with Homebrew, a tool that allows you to install and manage command line programs.</p>
 <h3>Install Homebrew</h3>
 <p>Visit <a href="https://brew.sh/">Homebrew's website</a> and follow the instructions there, or just copy and paste the following into your terminal:</p>
-<div class="codehilite"><pre><span></span><code>/bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line">/bin/bash -c <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="k">)</span><span class="s2">"</span></span>
 </code></pre></div>
-
-
 <h3>Install Python 3</h3>
 <p>Once Homebrew is done, you can use it to install Python and a number of other extremely useful command line tools.</p>
-<div class="codehilite"><pre><span></span><code>brew install python3
+<div class="codehilite"><pre><span></span><code><span class="code-line">brew install python3</span>
 </code></pre></div>
-
-
-<hr>
+<hr/>
 <h3>Install a Text Editor</h3>
 <p>To create and edit Python files you'll need a good text editor, specifically designed to edit code. Here are a few good options:</p>
 <ul>
@@ -63,216 +77,178 @@
 <li><a href="https://atom.io/">Atom</a></li>
 <li><a href="https://www.sublimetext.com/">Sublime</a> (not free)</li>
 </ul>
-<hr>
-<h2>Basics</h2>
-<p>Python is a command line application, just like <code>cat</code>, <code>grep</code> and <code>sort</code>.</p>
-<p>To execute Python code you run the <code>python</code> command with a text file as an argument.</p>
-<p>To start, let's make a simple program that prints a message on the terminal. To do this we will use the <code>print</code> command.</p>
-<p>Create a new file called <code>hello.py</code> and put this in it:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello comrade&quot;</span><span class="p">)</span>
+<hr/>
+<h2 id="python basics">Python Basics</h2>
+<p>Python is a command line application, just like <code><span class="code-line">cat</code>, <code><span class="code-line">grep</code> and <code><span class="code-line">sort</code>.</p>
+<p>To execute Python code you run the <code><span class="code-line">python</code> command with a text file as an argument.</p>
+<p>To start, let's make a simple program that prints a message on the terminal. To do this we will use the <code><span class="code-line">print</code> command.</p>
+<p>Create a new file called <code><span class="code-line">hello.py</code> and put this in it:</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello comrade"</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>Open your terminal and navigate to the directory where the file is saved, and then type:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">python</span> <span class="n">hello</span><span class="o">.</span><span class="n">py</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">python</span> <span class="n">hello</span><span class="o">.</span><span class="n">py</span></span>
 </code></pre></div>
-
-
 <p>You should see "Hello comrade" printed on the screen.</p>
 <h3>Expressions</h3>
 <p>An "expression" is a set of instructions for the computer to execute. Python will read or evaluate your expressions and return a result. For example you can add numbers:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mf">6.2</span> <span class="o">-</span> <span class="mi">70</span><span class="o">/</span><span class="mf">3.5</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mf">6.2</span> <span class="o">-</span> <span class="mi">70</span><span class="o">/</span><span class="mf">3.5</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>You can also test to see how different expressions relate to each other. </p>
-<p><code>==</code> tests for equality<br>
-<code>&lt;</code> less than<br>
-<code>&gt;</code> greater than<br>
-<code>&lt;=</code> less than or equal<br>
-<code>&gt;=</code> greater than or equal  </p>
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span>
+<p><code><span class="code-line">==</code> tests for equality<br/>
+<code><span class="code-line">&lt;</code> less than<br/>
+<code><span class="code-line">&gt;</code> greater than<br/>
+<code><span class="code-line">&lt;=</code> less than or equal<br/>
+<code><span class="code-line">&gt;=</code> greater than or equal  </p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<p>All of these expressions will evaluate to either a <code>True</code> or a <code>False</code></p>
-<hr>
+<p>All of these expressions will evaluate to either a <code><span class="code-line">True</code> or a <code><span class="code-line">False</code></p>
+<hr/>
 <h3>Variables</h3>
-<p>You can store the value of expressions inside named variables using the <code>=</code> symbol.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<p>You can store the value of expressions inside named variables using the <code><span class="code-line">=</code> symbol.</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span></span>
+<span class="code-line"><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span></span>
+<span class="code-line"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <h4>Types</h4>
 <p>Values have different "types" or categories. For example, 1 is an integer, 1.5 is a float.</p>
-<p>You can see what type a value is is by using the <code>type</code> function:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<p>You can see what type a value is is by using the <code><span class="code-line">type</code> function:</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span></span>
 </code></pre></div>
-
-
 <p>Some important types are:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">a_number</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># an integer</span>
-<span class="n">another_number</span> <span class="o">=</span> <span class="mf">5.1</span>        <span class="c1"># a float</span>
-<span class="n">some_string</span> <span class="o">=</span> <span class="s2">&quot;Hello!&quot;</span>      <span class="c1"># a string</span>
-<span class="n">some_boolean</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># a boolean (notice the capitalization)</span>
-<span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a bunch&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;stuff&quot;</span><span class="p">,</span> <span class="n">a_number</span><span class="p">,</span> <span class="n">some_string</span><span class="p">]</span>
-<span class="n">a_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;a string&quot;</span><span class="p">}</span> <span class="c1"># a dictionary (key/value pairs)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">a_number</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># an integer</span></span>
+<span class="code-line"><span class="n">another_number</span> <span class="o">=</span> <span class="mf">5.1</span>        <span class="c1"># a float</span></span>
+<span class="code-line"><span class="n">some_string</span> <span class="o">=</span> <span class="s2">"Hello!"</span>      <span class="c1"># a string</span></span>
+<span class="code-line"><span class="n">some_boolean</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># a boolean (notice the capitalization)</span></span>
+<span class="code-line"><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a bunch"</span><span class="p">,</span> <span class="s2">"of"</span><span class="p">,</span> <span class="s2">"stuff"</span><span class="p">,</span> <span class="n">a_number</span><span class="p">,</span> <span class="n">some_string</span><span class="p">]</span></span>
+<span class="code-line"><span class="n">a_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"key1"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"key2"</span><span class="p">:</span> <span class="s2">"a string"</span><span class="p">}</span> <span class="c1"># a dictionary (key/value pairs)</span></span>
 </code></pre></div>
-
-
 <p>In Python you do not need to declare variable types, or even that you are declaring a variable, you simply type a name, the equals sign, and then a value or expression.</p>
-<hr>
+<hr/>
 <h3>Strings</h3>
 <p>Strings are a variable type that stores text. To create a string, surround some text within quotation marks. It doesn't matter if you use single or double quotes as long as you are consistent.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Karl&quot;</span>
-<span class="n">last_name</span> <span class="o">=</span> <span class="s1">&#39;Marx&#39;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">last_name</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">first_name</span> <span class="o">=</span> <span class="s2">"Karl"</span></span>
+<span class="code-line"><span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Marx'</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">last_name</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>If you add two or more strings together, Python will combine a new string for you.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Karl&quot;</span>
-<span class="n">last_name</span> <span class="o">=</span> <span class="s1">&#39;Marx&#39;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">first_name</span> <span class="o">=</span> <span class="s2">"Karl"</span></span>
+<span class="code-line"><span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Marx'</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<p>Each character in a string is indexed numerically, and can access individual characters using <code>[]</code> square brackets. </p>
-<div class="codehilite"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Karl Marx&quot;</span>
-<span class="n">first_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_letter</span><span class="p">)</span>
-
-<span class="n">second_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">second_letter</span><span class="p">)</span>
+<p>Each character in a string is indexed numerically, and can access individual characters using <code><span class="code-line">[]</code> square brackets. </p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">name</span> <span class="o">=</span> <span class="s2">"Karl Marx"</span></span>
+<span class="code-line"><span class="n">first_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">first_letter</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">second_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">second_letter</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<p>The character index begins with the number 0. If you wish to access the last character, you use <code>-1</code>. The second to last, <code>-2</code> and so on.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Karl Marx&quot;</span>
-<span class="n">last_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">last_letter</span><span class="p">)</span>
+<p>The character index begins with the number 0. If you wish to access the last character, you use <code><span class="code-line">-1</code>. The second to last, <code><span class="code-line">-2</code> and so on.</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">name</span> <span class="o">=</span> <span class="s2">"Karl Marx"</span></span>
+<span class="code-line"><span class="n">last_letter</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">last_letter</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>You can also get a range of characters in a string by entering a starting and ending index in your square brackets:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Karl Marx&quot;</span>
-<span class="n">first_three_letters</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_three_letters</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">name</span> <span class="o">=</span> <span class="s2">"Karl Marx"</span></span>
+<span class="code-line"><span class="n">first_three_letters</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">first_three_letters</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<p>To get the total length of a string, use the <code>len()</code> function.</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello!&quot;</span><span class="p">))</span>
+<p>To get the total length of a string, use the <code><span class="code-line">len()</code> function.</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">"hello!"</span><span class="p">))</span></span>
 </code></pre></div>
-
-
-<p>You can also determine if a string exists within another string with the <code>in</code> keyword.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;A spectre is haunting Europe&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;spectre&quot;</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">)</span>
+<p>You can also determine if a string exists within another string with the <code><span class="code-line">in</code> keyword.</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"A spectre is haunting Europe"</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="s2">"spectre"</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <h4>String methods</h4>
 <p>Python's string implementation comes with many useful methods that allow you to transform and get information about strings.</p>
 <p>For example, to make a string uppercase:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;hello there!&quot;</span>
-<span class="n">uppercase</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">uppercase</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"hello there!"</span></span>
+<span class="code-line"><span class="n">uppercase</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">uppercase</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>Here are a few more examples of things that you can do</p>
-<div class="codehilite"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;   HELLO THERE   &quot;</span>
-
-<span class="c1"># make it uppercase</span>
-<span class="n">lowercase_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-
-<span class="c1"># make it title case</span>
-<span class="n">titlecase_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-
-<span class="c1"># remove white space at the start and end</span>
-<span class="n">stripped</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-<span class="c1"># replace one set of characters with another</span>
-<span class="n">goodby_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;HELLO&quot;</span><span class="p">,</span> <span class="s2">&quot;GOODBYE&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"   HELLO THERE   "</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># make it uppercase</span></span>
+<span class="code-line"><span class="n">lowercase_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># make it title case</span></span>
+<span class="code-line"><span class="n">titlecase_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">title</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># remove white space at the start and end</span></span>
+<span class="code-line"><span class="n">stripped</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># replace one set of characters with another</span></span>
+<span class="code-line"><span class="n">goodby_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"HELLO"</span><span class="p">,</span> <span class="s2">"GOODBYE"</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <p>Here's a full list: <a href="https://docs.python.org/3.7/library/stdtypes.html#string-methods">https://docs.python.org/3.7/library/stdtypes.html#string-methods</a></p>
-<hr>
+<hr/>
 <h3>Lists</h3>
 <p>A list is a numerically ordered collection of values, also known as an array.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># make an empty list</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># add something to our list with the &quot;append&quot; method</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span> <span class="c1"># the list will now look like this: [&quot;hi&quot;]</span>
-
-<span class="c1"># add some more stuff</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">100.2</span><span class="p">)</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;whatever&quot;</span><span class="p">)</span>
-
-<span class="c1"># now our list will look like this:</span>
-<span class="c1"># [&quot;hi&quot;, 45, 100.2, &quot;whatever&quot;]</span>
-
-<span class="c1"># get the length of a list</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-
-<span class="c1"># you can access individual items in the list by referrring to their index value</span>
-<span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># prints &quot;hi&quot;</span>
-<span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># prints 100.2</span>
-
-<span class="c1"># use negative numbers to start at the back</span>
-<span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># prints &quot;6&quot; - the last item</span>
-
-<span class="c1"># you can access part of a list with a &quot;:&quot;</span>
-<span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># will be [45, 100.2, &quot;whatever&quot;]</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="c1"># make an empty list</span></span>
+<span class="code-line"><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># add something to our list with the "append" method</span></span>
+<span class="code-line"><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"hi"</span><span class="p">)</span> <span class="c1"># the list will now look like this: ["hi"]</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># add some more stuff</span></span>
+<span class="code-line"><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">100.2</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"whatever"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># now our list will look like this:</span></span>
+<span class="code-line"><span class="c1"># ["hi", 45, 100.2, "whatever"]</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># get the length of a list</span></span>
+<span class="code-line"><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># you can access individual items in the list by referrring to their index value</span></span>
+<span class="code-line"><span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># prints "hi"</span></span>
+<span class="code-line"><span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># prints 100.2</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># use negative numbers to start at the back</span></span>
+<span class="code-line"><span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># prints "6" - the last item</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># you can access part of a list with a ":"</span></span>
+<span class="code-line"><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># will be [45, 100.2, "whatever"]</span></span>
 </code></pre></div>
-
-
-<p>You can iterate through every value in a list with the <code>for</code> keyword:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<p>You can iterate through every value in a list with the <code><span class="code-line">for</code> keyword:</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span></span>
+<span class="code-line">    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<hr>
+<hr/>
 <h3>Dictionaries</h3>
 <p>TK</p>
-<hr>
+<hr/>
 <h3>Methods</h3>
 <p>TK</p>
-<hr>
+<hr/>
 <h3>Reading files</h3>
-<p>To open a file in Python, use the <code>open()</code> keyword function. The function takes two arguments. The first is the name of the file to open, and the second is a flag that states if we are opening the file with the intent of <em>reading</em> to it (use "r"), or <em>writing</em> to it (use "w").</p>
-<p>Once we have opened a file, we use the <code>read</code> function to grab it's contents and return then as a string.</p>
+<p>To open a file in Python, use the <code><span class="code-line">open()</code> keyword function. The function takes two arguments. The first is the name of the file to open, and the second is a flag that states if we are opening the file with the intent of <em>reading</em> to it (use "r"), or <em>writing</em> to it (use "w").</p>
+<p>Once we have opened a file, we use the <code><span class="code-line">read</code> function to grab it's contents and return then as a string.</p>
 <p>In this example, we open a file and store its contents in a string. We then uppercase the entire file and print it to the screen.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;communist_manifesto.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">loud_manifesto</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">loud_manifesto</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"communist_manifesto.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></span>
+<span class="code-line"><span class="n">loud_manifesto</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></span>
+<span class="code-line"><span class="nb">print</span><span class="p">(</span><span class="n">loud_manifesto</span><span class="p">)</span></span>
 </code></pre></div>
-
-
-<p>You can also store a file as a list of lines using <code>readlines()</code> instead of <code>read()</code></p>
+<p>You can also store a file as a list of lines using <code><span class="code-line">readlines()</code> instead of <code><span class="code-line">read()</code></p>
 <p>This example prints the first 5 characters of a text file.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">all_lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;communist_manifesto.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">all_lines</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">all_lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"communist_manifesto.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span></span>
+<span class="code-line"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">all_lines</span><span class="p">:</span></span>
+<span class="code-line">    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span></span>
 </code></pre></div>
 
       </main>

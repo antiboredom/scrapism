@@ -12,9 +12,9 @@
       <meta name="twitter:image" content="https://scrapism.lav.io/images/baba.jpg" />
       <meta property="og:title" content="Scrapism" />
       <meta property="og:image" content="https://scrapism.lav.io/images/baba.jpg" />
-      <title>Scrapism - Using Real Browsers</title>
-      <link rel="stylesheet" href="https://scrapism.lav.io/theme/syntax.css" />
-      <link rel="stylesheet" href="https://scrapism.lav.io/theme/style.css" />
+      <title>Scrapism</title>
+      <link rel="stylesheet" href="../theme/syntax.css" />
+      <link rel="stylesheet" href="../theme/style.css" />
 
 
   </head>
@@ -23,15 +23,34 @@
     <div class="container">
       <header>
         <ol role="navigation">
-            <li><a href="https://scrapism.lav.io/">Scrapism</a></li>
-            <li><a href="https://scrapism.lav.io/intro-to-the-command-line/">Intro to the Command Line</a></li>
-            <li><a href="https://scrapism.lav.io/intro-to-python/">Intro to Python</a></li>
-            <li><a href="https://scrapism.lav.io/web-scraping-basics/">Web Scraping Basics</a></li>
-            <li class="active"><a href="https://scrapism.lav.io/using-real-browsers/">Using Real Browsers</a></li>
-            <li><a href="https://scrapism.lav.io/scraping-xhr-requests/">Scraping XHR Requests</a></li>
-            <li><a href="https://scrapism.lav.io/downloading-media/">Downloading Media</a></li>
-            <li><a href="https://scrapism.lav.io/using-scrapy/">Using Scrapy</a></li>
-            <li><a href="https://scrapism.lav.io/readings-resources/">Readings & Resources</a></li>
+            <li>
+              <a href="../">Scrapism</a>
+            </li>
+            <li>
+              <a href="../intro-to-the-command-line/">Intro to the Command Line</a>
+            </li>
+            <li>
+              <a href="../intro-to-python/">Intro to Python</a>
+            </li>
+            <li>
+              <a href="../web-scraping-basics/">Web Scraping Basics</a>
+            </li>
+            <li class="active">
+              <a href="../using-real-browsers/">Using Real Browsers</a>
+                <div id="toc"><ul><li><a class="toc-href" href="#selenium" title="Selenium">Selenium</a></li><li><a class="toc-href" href="#puppeteer" title="Puppeteer">Puppeteer</a></li><li><a class="toc-href" href="#requests_html" title="requests_html">requests_html</a></li></ul></div>
+            </li>
+            <li>
+              <a href="../scraping-xhr/">Scraping XHR</a>
+            </li>
+            <li>
+              <a href="../downloading-editing-media/">Downloading & Editing Media</a>
+            </li>
+            <li>
+              <a href="../using-scrapy/">Using Scrapy</a>
+            </li>
+            <li>
+              <a href="../readings-resources/">Readings & Resources</a>
+            </li>
         </ol>
       </header>
 
@@ -39,122 +58,142 @@
     <h1>Using Real Browsers</h1>
     
 
-    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/PIcfhlpq_xc" frameborder="0" allowfullscreen></iframe></div>
-
-<p>The technique shown in the previous chapter involved using <code>requests</code> to download HTML and <code>BeautifulSoup</code> to parse it. You'll find that that technique frequently fails, for one of two reasons:</p>
+    <div class="embed"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube-nocookie.com/embed/PIcfhlpq_xc"></iframe></div>
+<p>The technique shown in the previous chapter involved using <code><span class="code-line">requests</code> to download HTML and <code><span class="code-line">BeautifulSoup</code> to parse it. You'll find that that technique frequently fails, for one of two reasons:</p>
 <ol>
-<li>Many websites load content using JavaScript <strong><em>after</em></strong> the initial HTML loads. <code>requests</code> can only load that initial HTML and isn't able to execute JavaScript.</li>
+<li>Many websites load content using JavaScript <strong><em>after</em></strong> the initial HTML loads. <code><span class="code-line">requests</code> can only load that initial HTML and isn't able to execute JavaScript.</li>
 <li>The website you're trying to scrape might have some measures in place to block bots.</li>
 </ol>
 <p>One method to (sometimes) get around these issues is to automate a real browser like Chrome or Firefox. This means that rather than just downloading the HTML content of a site, you actually open Chrome or Firefox on your computer and control it with a script. This tends to be a bit slower than downloading and parsing HTML, but gives you the ability to scrape otherwise-difficult sites, and allows you to do fun things like take screenshots and fill out forms.</p>
 <p>The guide covers two browser automation libraries: <a href="https://selenium-python.readthedocs.io/">selenium</a> and <a href="https://pptr.dev">puppeteer</a>.</p>
-<h2>Selenium</h2>
+<h2 id="selenium">Selenium</h2>
 <p>Selenium is a library that allows you to control Chrome, Firefox and Safari from a variety of programming languages.</p>
 <p>To install:</p>
-<div class="codehilite"><pre><span></span><code>pip3 install selenium
+<div class="codehilite"><pre><span></span><code><span class="code-line">pip3 install selenium</span>
 </code></pre></div>
-
-
 <p>You also need to install a "driver" for the browser you intend to automate. This is a kind of bridge application that allows selenium to communicate with a given browser.</p>
 <p>For Chrome (on Mac):</p>
-<div class="codehilite"><pre><span></span><code>brew cask install chromedriver
+<div class="codehilite"><pre><span></span><code><span class="code-line">brew cask install chromedriver</span>
 </code></pre></div>
-
-
 <p>For Firefox:</p>
-<div class="codehilite"><pre><span></span><code>brew install geckodriver
+<div class="codehilite"><pre><span></span><code><span class="code-line">brew install geckodriver</span>
 </code></pre></div>
-
-
-<p>Scraping with selenium is very similar to BeautifulSoup. You create a <code>webdriver</code> object, visit a website, and then use css selectors to extract text and attributes from HTML elements. </p>
-<p>Note that the method to query by selector is <code>find_elements_by_css_selector</code> for multiple elements, and <code>find_element_by_css_selector</code> for just one element. To extract attributes like <code>href</code> or <code>src</code> use the <code>get_attribute</code> method.</p>
+<p>Scraping with selenium is very similar to BeautifulSoup. You create a <code><span class="code-line">webdriver</code> object, visit a website, and then use css selectors to extract text and attributes from HTML elements. </p>
+<p>Note that the method to query by selector is <code><span class="code-line">find_elements_by_css_selector</code> for multiple elements, and <code><span class="code-line">find_element_by_css_selector</code> for just one element. To extract attributes like <code><span class="code-line">href</code> or <code><span class="code-line">src</code> use the <code><span class="code-line">get_attribute</code> method.</p>
 <p>Here's a simple example script that gets product names from Alibaba, searching fro the phrase "labor camp":</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># import the selenium</span>
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-
-<span class="c1"># open chrome</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-
-<span class="c1"># visit alibaba</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.alibaba.com/products/labor_camp.html?IndexArea=product_en&amp;page=1&quot;</span><span class="p">)</span>
-
-<span class="c1"># select h4 elements</span>
-<span class="n">items</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s2">&quot;h4&quot;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="c1"># import the selenium</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># open chrome</span></span>
+<span class="code-line"><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># visit alibaba</span></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://www.alibaba.com/products/labor_camp.html?IndexArea=product_en&amp;page=1"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># select h4 elements</span></span>
+<span class="code-line"><span class="n">items</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s2">"h4"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span></span>
+<span class="code-line">    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></span>
 </code></pre></div>
-
-
 <p>Please note that you must explicitly tell selenium to close the browser when you are done!</p>
 <h4>Headless Mode</h4>
 <p>Selenium can also operate in "headless" mode, which means that the browser will run without a graphic interface and never appear on your screen. I find that I prefer this mode once I've debugged my code and everything is working as intended. To use headless mode, you must instantiate your webdriver object with some additional parameters:</p>
-<div class="codehilite"><pre><span></span><code>from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-
-
-<span class="nv">chrome_options</span> <span class="o">=</span> Options<span class="o">()</span>
-chrome_options.add_argument<span class="o">(</span><span class="s2">&quot;--headless&quot;</span><span class="o">)</span>
-<span class="nv">driver</span> <span class="o">=</span> webdriver.Chrome<span class="o">(</span><span class="nv">options</span><span class="o">=</span>chrome_options<span class="o">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line">from selenium import webdriver</span>
+<span class="code-line">from selenium.webdriver.chrome.options import Options</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nv">chrome_options</span> <span class="o">=</span> Options<span class="o">()</span></span>
+<span class="code-line">chrome_options.add_argument<span class="o">(</span><span class="s2">"--headless"</span><span class="o">)</span></span>
+<span class="code-line"><span class="nv">driver</span> <span class="o">=</span> webdriver.Chrome<span class="o">(</span><span class="nv">options</span><span class="o">=</span>chrome_options<span class="o">)</span></span>
 </code></pre></div>
-
-
 <h4>Screenshots</h4>
 <p>Selenium allows you to change the window size of the browser and take screenshots:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># take a square screenshot</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">&quot;screenshot.png&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="c1"># take a square screenshot</span></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"screenshot.png"</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <h4>Forms</h4>
 <p>You can also fill out forms, which can allow you to log in to websites.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># type &quot;karl&quot; into a &quot;username&quot; input</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">&quot;.username&quot;</span><span class="p">)</span>
-<span class="n">user</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;karl&quot;</span><span class="p">)</span>
-
-<span class="c1"># type &quot;capit@l&quot; into a password field</span>
-<span class="n">passw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">&quot;.password&quot;</span><span class="p">)</span>
-<span class="n">passw</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;capit@l&quot;</span><span class="p">)</span>
-
-<span class="c1"># click on the submit button</span>
-<span class="n">submit</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">&quot;.submit&quot;</span><span class="p">)</span>
-<span class="n">submit</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="c1"># type "karl" into a "username" input</span></span>
+<span class="code-line"><span class="n">user</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".username"</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">user</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"karl"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># type "capit@l" into a password field</span></span>
+<span class="code-line"><span class="n">passw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".password"</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">passw</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"capit@l"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># click on the submit button</span></span>
+<span class="code-line"><span class="n">submit</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".submit"</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">submit</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></span>
 </code></pre></div>
-
-
 <h4>JavaScript</h4>
 <p>Finally, selenium can execute JavaScript code.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># javascript to replace all h2s with &quot;lol&quot;</span>
-<span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">let headlines = document.querySelectorAll(&quot;h1, h2, h3, h4, h5&quot;);</span>
-<span class="s2">for (let h of headlines) {</span>
-<span class="s2">  h.textContent = &quot;Lol&quot;</span>
-<span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="c1"># execute the script</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
-
-<span class="c1"># save a screenshot</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">&quot;lol.png&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="c1"># javascript to replace all h2s with "lol"</span></span>
+<span class="code-line"><span class="n">script</span> <span class="o">=</span> <span class="s2">"""</span></span>
+<span class="code-line"><span class="s2">let headlines = document.querySelectorAll("h1, h2, h3, h4, h5");</span></span>
+<span class="code-line"><span class="s2">for (let h of headlines) {</span></span>
+<span class="code-line"><span class="s2">  h.textContent = "Lol"</span></span>
+<span class="code-line"><span class="s2">}</span></span>
+<span class="code-line"><span class="s2">"""</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># execute the script</span></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># save a screenshot</span></span>
+<span class="code-line"><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"lol.png"</span><span class="p">)</span></span>
 </code></pre></div>
-
-
 <h4>Selenium Examples</h4>
 <ul>
-<li><a href="https://github.com/antiboredom/scrapism/blob/master/examples/alibaba_selenium.py">Alibaba Scraper</a>: scrapes Alibaba for a search query, downloads product images, and saves product information into a json file called <code>product.json</code></li>
+<li><a href="https://github.com/antiboredom/scrapism/blob/master/examples/alibaba_selenium.py">Alibaba Scraper</a>: scrapes Alibaba for a search query, downloads product images, and saves product information into a json file called <code><span class="code-line">product.json</code></li>
 <li><a href="https://github.com/antiboredom/scrapism/blob/master/examples/foxlol.py">Fox News Lol</a>: replaces headlines with "Lol" on foxnews.com and saves a screenshot</li>
 <li><a href="https://github.com/antiboredom/scrapism/blob/master/examples/breitbart_comments.py">Breitbart Comments</a>: scrapes Breitbart for headlines and sorts them by total user comments</li>
 </ul>
 <h2 id="puppeteer">Puppeteer</h2>
-<p><a href="https://pptr.dev/">Puppeteer</a> is a Node.js library written by Google for automating Chrome. There is also an (unofficial) Python version of it called <a href="https://github.com/pyppeteer/pyppeteer">pyppeteer</a>.</p>
-<p>More to come!</p>
-<h2>requests_html</h2>
-<p><a href="https://requests-html.kennethreitz.org/">requests_html</a> is a convenient library that combines <code>requests</code>, <code>pyquery</code> and <code>pyppeteer</code>. It provides less control than just using pyppeteer directly, but is extremely convenient for certain use cases.</p>
-<p>More to come!</p>
+<p><a href="https://pptr.dev/">Puppeteer</a> is a Node.js library written by Google for automating Chrome. There is also an (unofficial) python version of it called <a href="https://github.com/pyppeteer/pyppeteer">pyppeteer</a>.</p>
+<p>Since the rest of this guide uses python, I'll cover pyppeteer here (although you are most welcome to the original nodejs version if you prefer). </p>
+<p>Scraping with pyppeteer involves a slightly different workflow than selenium. Notably, it makes use of asynchronous function calls to load pages, and requires that you execute javascript functions to extract content.</p>
+<p>Install pyppeteer with pip:</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="n">pip3</span> <span class="n">install</span> <span class="n">pyppeteer</span></span>
+</code></pre></div>
+<p>Here's a basic example that scrapes product names from Alibaba matching the search term "labor camp":</p>
+<div class="codehilite"><pre><span></span><code><span class="code-line"><span class="kn">import</span> <span class="nn">asyncio</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">pyppeteer</span> <span class="kn">import</span> <span class="n">launch</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span></span>
+<span class="code-line">    <span class="c1"># create a new browser object and open a blank page</span></span>
+<span class="code-line">    <span class="n">browser</span> <span class="o">=</span> <span class="k">await</span> <span class="n">launch</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">page</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">newPage</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="c1"># visit a url</span></span>
+<span class="code-line">    <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://www.alibaba.com/products/labor_camp.html?IndexArea=product_en&amp;page=1'</span></span>
+<span class="code-line">    <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="c1"># querySelectorAll() selects elements matching a css query</span></span>
+<span class="code-line">    <span class="n">items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">querySelectorAll</span><span class="p">(</span><span class="s2">".organic-gallery-offer-outter"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="c1"># loop over elements</span></span>
+<span class="code-line">    <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="c1"># find h4 tags inside item listings</span></span>
+<span class="code-line">        <span class="n">name_element</span> <span class="o">=</span> <span class="k">await</span> <span class="n">product</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">"h4"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="c1"># extract the text content</span></span>
+<span class="code-line">        <span class="n">name</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s1">'(element) =&gt; element.textContent'</span><span class="p">,</span> <span class="n">name_element</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="c1"># close the browser</span></span>
+<span class="code-line">    <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span></span>
+</code></pre></div>
+<p>Note that to actually extract text or attributes from elements you must use the <code><span class="code-line">page.evaluate</code> function to execute javascript inside the browser, passing in elements that you have selected using <code><span class="code-line">querySelector</code> or <code><span class="code-line">querySelectorAll</code>.</p>
+<h2 id="requests_html">requests_html</h2>
+<p><a href="https://requests-html.kennethreitz.org/">requests_html</a> is a convenient library that combines <code><span class="code-line">requests</code>, <code><span class="code-line">pyquery</code> and <code><span class="code-line">pyppeteer</code>. It provides less control than just using pyppeteer directly, but is extremely convenient for certain use cases.</p>
+<p>(Examples to come...)</p>
 
       </main>
     </div>
