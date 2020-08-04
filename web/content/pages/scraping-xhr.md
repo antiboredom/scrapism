@@ -2413,7 +2413,6 @@ Note that you will need to carefully look through the response JSON in the web i
 
 You can also change the data being sent to the server to fetch different results. In [this example](https://github.com/antiboredom/scrapism/blob/master/examples/glassdoor_reviews.py) I modify the `page` field being sent to the server to get a small archive of negative Border Patrol reviews:
 
-
 <div style="border: 1px 0px solid #ccc; font-size:0.85em;height:300px;overflow-y:scroll;font-family:monospace;">
 <p>"All duties as assigned" Means anything they want you to.</p>
 <p>"We only speak the simple language here". (Being English)</p>
@@ -2629,3 +2628,5 @@ You can also change the data being sent to the server to fetch different results
 <p>Your hard work won't count as a person or individual. You will just be a number like a robot if you can bear it after years of service, many employees wind up divorced stress or more serious health conditions.  Large male environment not supportive of WOMEN, very difficult for women of any age and much more difficult job to balance if you have a family.  Women have the highest calls for counseling needs to EAP and EEO's. Lots of schmoozing croonism copycat self entitlement attitudes and environment. Lots of demoralized coworkers and mismanagement caused issues. Agency is worst rated within Federal Viewpoint Survey and overall. HQ and DFO management does not have a clue to ask lower level grade employees how to improve agency and work environment and save jobs and monies. Very difficult to get promoted, management spends wastes budget Congress allocated monies on promoting management and creating management positions instead of lower grade employees. NTEU union takes your dues and local union (male) president plays politics with little legal representation when needed much less for women's issues. Union is "not" representative of  women's issues at work. Cons rating is for all of Florida.</p>
 <p>Zero leadership. Chief of the Border Patrol bows to the commissioner of CBP. Constant threats of cutting agents pay. You stress every year because Customs and Border Protection finds another way to demoralize agents by taking a percentage of pay. Agency spends billions on stuff it doesn't need like forward operating bases, which the agents have to man on weeks on end. Frivolous spending on ridiculous agent manned camps that agents are forced to work while simultaneously claiming agents there is no money to pay the agents. Start work here, than move to a professional law enforcement agency</p>
 </div>
+
+You can use the same technique to scrape virtually any website.
