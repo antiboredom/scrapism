@@ -2411,7 +2411,7 @@ time.sleep(1)
 
 Note that you will need to carefully look through the response JSON in the web inspector to figure out exactly what fields to extract.
 
-You can also change the data being sent to the server to fetch different results. In [this example]() I modify the `page` field being sent to the server to get a small archive of negative Border Patrol reviews:
+You can also change the data being sent to the server to fetch different results. In [this example](https://github.com/antiboredom/scrapism/blob/master/examples/glassdoor_reviews.py) I modify the `page` field being sent to the server to get a small archive of negative Border Patrol reviews:
 
 
 <div style="border: 1px 0px solid #ccc; font-size:0.85em;height:300px;overflow-y:scroll;font-family:monospace;">
