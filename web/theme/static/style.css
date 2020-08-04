@@ -122,7 +122,13 @@ code {
   padding: 1px 0px 1px 6px;
   margin-bottom: 16px;
   position: relative;
-  margin-right: calc(-0.5 * (100vw - var(--header-width) - var(--content-width)))
+}
+
+.extended,
+.codehilite {
+  margin-right: calc(
+    -0.5 * (100vw - var(--header-width) - var(--content-width))
+  );
 }
 
 .codehilite pre {

@@ -179,10 +179,11 @@ async def main():
     # close the browser
     await browser.close()
 
+# run the main function
 asyncio.get_event_loop().run_until_complete(main())
 ```
 
-Note that to actually extract text or attributes from elements you must use the `page.evaluate` function to execute javascript inside the browser, passing in elements that you have selected using `querySelector` or `querySelectorAll`.
+Note that to actually extract text or attributes from elements you must use the `page.evaluate` function to execute javascript inside the browser, passing in elements that you have selected using `querySelector` or `querySelectorAll`. On line 23, `'(element) => element.textContent'` is a JavaScript function that returns the `textContent` attribute (the text) of the passed element, in this case the `name_element`.
 
 ## requests_html
 
