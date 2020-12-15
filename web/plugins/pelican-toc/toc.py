@@ -13,7 +13,7 @@ import re
 from bs4 import BeautifulSoup, Comment
 
 from pelican import contents, signals
-from pelican.utils import python_2_unicode_compatible, slugify
+from pelican.utils import slugify
 
 
 logger = logging.getLogger(__name__)
@@ -43,7 +43,6 @@ def unique(id, ids):
     return id
 
 
-@python_2_unicode_compatible
 class HtmlTreeNode(object):
     def __init__(self, parent, header, level, id, include_title):
         self.children = []
