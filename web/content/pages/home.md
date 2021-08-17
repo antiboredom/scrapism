@@ -9,7 +9,7 @@ I define "scrapism" as the practice of web scraping for artistic, emotional, and
 
 -------
 
-This is a work-in-progress guide to web scraping as an artistic and critical practice, created by <a href="https://lav.io">Sam Lavigne</a>. I will be updating it over the coming months! I'll also be doing occasional live demos either on Twitch or YoutTube.
+This is a work-in-progress guide to web scraping as an artistic and critical practice, created by <a href="https://lav.io">Sam Lavigne</a>. I will be updating it over the coming months! I'll also be doing occasional live demos either on Twitch or YouTube.
 
 You can sign up to receive
 updates at: <a href="https://tinyletter.com/scrapism">https://tinyletter.com/scrapism</a>.
