@@ -11,7 +11,7 @@ The command line is a text-based interface for interacting with your computer. F
 
 On a Mac you can access the command line by opening up the `Terminal` application, located in `/Applications/Utilities/Terminal`
 
-To get started on Windows you will need to set up the Windows Subsystem for Linux, which allows you to run Ubuntu (a Linux distribution) from within your current Windows 10 installation.  [Follow this guide to do so](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows).
+To get started on Windows you will need to set up the Windows Subsystem for Linux, which allows you to run Ubuntu (a Linux distribution) from within your current Windows 10 installation.  [Follow this guide to do so](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows). Alternatively, you can install [Git for Windows](https://gitforwindows.org/) which includes many of the commands I'll be covering below.
 
 
 ---
@@ -232,7 +232,7 @@ more /Users/sam/Desktop/the_man_without_qualities.txt
 
 There are a few shortcuts for dealing paths as well.
 
-`.` (single dot) or './' (single dot with slash) means the current folder that I am in.
+`.` (single dot) or `'./'` (single dot with slash) means the current folder that I am in.
 
 `..` (two dots) or `../` (two dots with slash) means the parent folder. For example, if am in my Desktop folder and I want to list the contents of my Downloads folder I could type:
 
@@ -275,4 +275,4 @@ It can take a while to get used to the command line, but there are a few tips an
 * Hit the tab key to autocomplete commands and file paths
 * Type `open` and then a filename to open the file in its default program
 * Drag a folder or file onto the terminal to fill in its absolute path
-* Type ctrl-a to move your cursor to the beginning of the line, and ctrl-e to the end
+* Type `ctrl-a` to move your cursor to the beginning of the line, and `ctrl-e` to the end
